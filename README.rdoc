@@ -1,0 +1,31 @@
+= Weather output plugin for Fluent
+
+fluent-plugin-weather is a fluent plugin to copy output with adding weather field.
+Without 'latitude' and 'longitude' fields, this add null for weather fields.
+
+== Installation
+
+What you have to do is only installing like this:
+
+    gem install fluent-plugin-weather
+
+Then fluent automatically loads the plugin installed.
+
+== Configuratin
+
+    <match weather.**>
+      type weather
+      api_key #YOUR_WUNDERGROUND_API_KEY
+      <weather_types> # write regexp by type(ignore case)
+        1 sunny|clear
+        2 cloud|overcast|haze|fog
+        3 rain|sleet|snow|storms
+      </weather_types>
+
+      <store>
+        # ...
+      </store>
+      <store>
+        # ...
+      </store>
+    </match>
